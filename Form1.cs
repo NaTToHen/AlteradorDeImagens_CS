@@ -219,35 +219,35 @@ namespace AlteradorDeImagens {
                 Color p;
                 Color p2;
 
-                    for (int y = 0; y < height; y++)
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
                     {
-                        for (int x = 0; x < width; x++)
-                        {
-                            p = bmp.GetPixel(x, y);
-                            p2 = bmp2.GetPixel(x, y);
+                        p = bmp.GetPixel(x, y);
+                        p2 = bmp2.GetPixel(x, y);
 
-                            int a = p.A + p2.A;
-                            int r = p.R + p2.R;
-                            int g = p.G + p2.G;
-                            int b = p.B + p2.B;
+                        int a = p.A + p2.A;
+                        int r = p.R + p2.R;
+                        int g = p.G + p2.G;
+                        int b = p.B + p2.B;
 
-                            if (a > 255) a = 255;
-                            if (a < 0) a = 0;
+                        if (a > 255) a = 255;
+                        if (a < 0) a = 0;
 
-                            if (r > 255) r = 255;
-                            if (r < 0) r = 0;
+                        if (r > 255) r = 255;
+                        if (r < 0) r = 0;
 
-                            if (g > 255) g = 255;
-                            if (g < 0) g = 0;
+                        if (g > 255) g = 255;
+                        if (g < 0) g = 0;
 
-                            if (b > 255) b = 255;
-                            if (b < 0) b = 0;
+                        if (b > 255) b = 255;
+                        if (b < 0) b = 0;
 
-                            imagemFinal.SetPixel(x, y, Color.FromArgb(a, red: r, green: g, blue: b));
-                        }
+                        imagemFinal.SetPixel(x, y, Color.FromArgb(a, red: r, green: g, blue: b));
                     }
-                    imgFinal.Image = imagemFinal;
                 }
+                imgFinal.Image = imagemFinal;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Insira uma imagem na imagem 1, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
