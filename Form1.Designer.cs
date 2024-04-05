@@ -61,7 +61,7 @@
             // 
             btnImagem1.Anchor = AnchorStyles.None;
             btnImagem1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnImagem1.Location = new Point(45, 397);
+            btnImagem1.Location = new Point(83, 397);
             btnImagem1.Name = "btnImagem1";
             btnImagem1.Size = new Size(350, 32);
             btnImagem1.TabIndex = 1;
@@ -73,7 +73,8 @@
             // 
             imgCarregada.Anchor = AnchorStyles.None;
             imgCarregada.BackColor = Color.FromArgb(30, 30, 30);
-            imgCarregada.Location = new Point(45, 32);
+            imgCarregada.BorderStyle = BorderStyle.FixedSingle;
+            imgCarregada.Location = new Point(83, 32);
             imgCarregada.Name = "imgCarregada";
             imgCarregada.Size = new Size(350, 350);
             imgCarregada.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -84,7 +85,8 @@
             // 
             imgFinal.Anchor = AnchorStyles.None;
             imgFinal.BackColor = Color.FromArgb(30, 30, 30);
-            imgFinal.Location = new Point(1276, 32);
+            imgFinal.BorderStyle = BorderStyle.FixedSingle;
+            imgFinal.Location = new Point(1238, 32);
             imgFinal.Name = "imgFinal";
             imgFinal.Size = new Size(350, 350);
             imgFinal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -156,7 +158,8 @@
             // 
             imgCarregada2.Anchor = AnchorStyles.None;
             imgCarregada2.BackColor = Color.FromArgb(30, 30, 30);
-            imgCarregada2.Location = new Point(414, 32);
+            imgCarregada2.BorderStyle = BorderStyle.FixedSingle;
+            imgCarregada2.Location = new Point(452, 32);
             imgCarregada2.Name = "imgCarregada2";
             imgCarregada2.Size = new Size(350, 350);
             imgCarregada2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -167,11 +170,11 @@
             // 
             btnImagem2.Anchor = AnchorStyles.None;
             btnImagem2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnImagem2.Location = new Point(414, 397);
+            btnImagem2.Location = new Point(452, 397);
             btnImagem2.Name = "btnImagem2";
             btnImagem2.Size = new Size(350, 32);
             btnImagem2.TabIndex = 9;
-            btnImagem2.Text = "Carregar imagem 2";
+            btnImagem2.Text = "Carregar imagem para somar";
             btnImagem2.UseVisualStyleBackColor = true;
             btnImagem2.Click += btnImagem2_Click;
             // 
@@ -202,7 +205,7 @@
             // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(8F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
             ClientSize = new Size(1684, 624);

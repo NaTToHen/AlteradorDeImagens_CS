@@ -90,7 +90,10 @@ namespace AlteradorDeImagens {
 
                 int valorSomar = Int32.Parse(valorBrilho.Text);
 
-                if (valorSomar > 255) valorSomar = 255;
+                if (valorSomar < 0 || valorSomar > 255 || valorBrilho.Text == "")
+                {
+                    MessageBox.Show("Insira um valor entre 0 e 255", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 for (int y = 0; y < height; y++)
                 {
@@ -250,7 +253,7 @@ namespace AlteradorDeImagens {
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Insira uma imagem na imagem 1, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
