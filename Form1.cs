@@ -88,9 +88,14 @@ namespace AlteradorDeImagens {
                 int height = bmp.Height;
                 Color p;
 
+                if (valorBrilho.Text == "")
+                {
+                    MessageBox.Show("Insira um valor entre 0 e 255", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 int valorSomar = Int32.Parse(valorBrilho.Text);
 
-                if (valorSomar < 0 || valorSomar > 255 || valorBrilho.Text == "")
+                if (valorSomar < 0 || valorSomar > 255)
                 {
                     MessageBox.Show("Insira um valor entre 0 e 255", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -254,6 +259,43 @@ namespace AlteradorDeImagens {
             catch (Exception ex)
             {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBinario_Click(object sender, EventArgs e) {
+            try
+            {
+                Bitmap bmp = new Bitmap(imageURL);
+                int width = bmp.Width;
+                int height = bmp.Height;
+                Color p;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        p = bmp.GetPixel(x, y);
+
+                        int a = p.A;
+                        int r = p.R;
+                        int g = p.G;
+                        int b = p.B;
+
+                        int avg = (r + g + b) / 3;
+                        if(avg >= 126)
+                        {
+                            bmp.SetPixel(x, y, Color.White);
+                        } else
+                        {
+                            bmp.SetPixel(x, y, Color.Black);
+                        }
+                    }
+                }
+                imgFinal.Image = bmp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insira uma imagem na imagem 1, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

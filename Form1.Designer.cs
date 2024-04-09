@@ -40,6 +40,7 @@
             btnImagem2 = new Button();
             valorContraste = new TextBox();
             btnSomar = new Button();
+            btnBinario = new Button();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
@@ -60,6 +61,7 @@
             // btnImagem1
             // 
             btnImagem1.Anchor = AnchorStyles.None;
+            btnImagem1.FlatAppearance.MouseOverBackColor = Color.White;
             btnImagem1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem1.Location = new Point(83, 397);
             btnImagem1.Name = "btnImagem1";
@@ -96,8 +98,9 @@
             // btnCinza
             // 
             btnCinza.Anchor = AnchorStyles.None;
+            btnCinza.FlatAppearance.MouseOverBackColor = Color.White;
             btnCinza.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCinza.Location = new Point(826, 127);
+            btnCinza.Location = new Point(829, 71);
             btnCinza.Name = "btnCinza";
             btnCinza.Size = new Size(201, 32);
             btnCinza.TabIndex = 4;
@@ -108,8 +111,9 @@
             // btnBrilho
             // 
             btnBrilho.Anchor = AnchorStyles.None;
+            btnBrilho.FlatAppearance.MouseOverBackColor = Color.White;
             btnBrilho.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBrilho.Location = new Point(826, 184);
+            btnBrilho.Location = new Point(829, 128);
             btnBrilho.Name = "btnBrilho";
             btnBrilho.Size = new Size(201, 32);
             btnBrilho.TabIndex = 5;
@@ -122,7 +126,7 @@
             valorBrilho.Anchor = AnchorStyles.None;
             valorBrilho.BorderStyle = BorderStyle.None;
             valorBrilho.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorBrilho.Location = new Point(1033, 184);
+            valorBrilho.Location = new Point(1036, 128);
             valorBrilho.MinimumSize = new Size(180, 30);
             valorBrilho.Name = "valorBrilho";
             valorBrilho.PlaceholderText = "Valor adicionado";
@@ -133,8 +137,9 @@
             // btnNegativo
             // 
             btnNegativo.Anchor = AnchorStyles.None;
+            btnNegativo.FlatAppearance.MouseOverBackColor = Color.White;
             btnNegativo.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNegativo.Location = new Point(826, 237);
+            btnNegativo.Location = new Point(829, 181);
             btnNegativo.Name = "btnNegativo";
             btnNegativo.Size = new Size(201, 32);
             btnNegativo.TabIndex = 7;
@@ -145,8 +150,9 @@
             // btnContraste
             // 
             btnContraste.Anchor = AnchorStyles.None;
+            btnContraste.FlatAppearance.MouseOverBackColor = Color.White;
             btnContraste.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnContraste.Location = new Point(826, 291);
+            btnContraste.Location = new Point(829, 235);
             btnContraste.Name = "btnContraste";
             btnContraste.Size = new Size(201, 32);
             btnContraste.TabIndex = 8;
@@ -169,6 +175,7 @@
             // btnImagem2
             // 
             btnImagem2.Anchor = AnchorStyles.None;
+            btnImagem2.FlatAppearance.MouseOverBackColor = Color.White;
             btnImagem2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem2.Location = new Point(452, 397);
             btnImagem2.Name = "btnImagem2";
@@ -183,7 +190,7 @@
             valorContraste.Anchor = AnchorStyles.None;
             valorContraste.BorderStyle = BorderStyle.None;
             valorContraste.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorContraste.Location = new Point(1033, 291);
+            valorContraste.Location = new Point(1036, 235);
             valorContraste.MinimumSize = new Size(180, 30);
             valorContraste.Name = "valorContraste";
             valorContraste.PlaceholderText = "Valor adicionado";
@@ -194,8 +201,9 @@
             // btnSomar
             // 
             btnSomar.Anchor = AnchorStyles.None;
+            btnSomar.FlatAppearance.MouseOverBackColor = Color.White;
             btnSomar.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSomar.Location = new Point(826, 341);
+            btnSomar.Location = new Point(829, 285);
             btnSomar.Name = "btnSomar";
             btnSomar.Size = new Size(201, 32);
             btnSomar.TabIndex = 12;
@@ -203,12 +211,26 @@
             btnSomar.UseVisualStyleBackColor = true;
             btnSomar.Click += btnSomar_Click;
             // 
+            // btnBinario
+            // 
+            btnBinario.Anchor = AnchorStyles.None;
+            btnBinario.FlatAppearance.MouseOverBackColor = Color.White;
+            btnBinario.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBinario.Location = new Point(829, 332);
+            btnBinario.Name = "btnBinario";
+            btnBinario.Size = new Size(201, 32);
+            btnBinario.TabIndex = 13;
+            btnBinario.Text = "Imagem binaria";
+            btnBinario.UseVisualStyleBackColor = true;
+            btnBinario.Click += btnBinario_Click;
+            // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
             ClientSize = new Size(1684, 624);
+            Controls.Add(btnBinario);
             Controls.Add(btnSomar);
             Controls.Add(valorContraste);
             Controls.Add(imgCarregada2);
@@ -250,5 +272,6 @@
         private Button btnImagem2;
         private TextBox valorContraste;
         private Button btnSomar;
+        private Button btnBinario;
     }
 }
