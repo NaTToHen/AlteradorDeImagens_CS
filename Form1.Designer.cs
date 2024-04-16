@@ -41,6 +41,13 @@
             valorContraste = new TextBox();
             btnSomar = new Button();
             btnBinario = new Button();
+            valorBlending = new TextBox();
+            btnBlending = new Button();
+            btnNot = new Button();
+            btnAnd = new Button();
+            btnXor = new Button();
+            btnOr = new Button();
+            btnHistograma = new Button();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
@@ -100,7 +107,7 @@
             btnCinza.Anchor = AnchorStyles.None;
             btnCinza.FlatAppearance.MouseOverBackColor = Color.White;
             btnCinza.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCinza.Location = new Point(829, 71);
+            btnCinza.Location = new Point(830, 32);
             btnCinza.Name = "btnCinza";
             btnCinza.Size = new Size(201, 32);
             btnCinza.TabIndex = 4;
@@ -113,7 +120,7 @@
             btnBrilho.Anchor = AnchorStyles.None;
             btnBrilho.FlatAppearance.MouseOverBackColor = Color.White;
             btnBrilho.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBrilho.Location = new Point(829, 128);
+            btnBrilho.Location = new Point(830, 79);
             btnBrilho.Name = "btnBrilho";
             btnBrilho.Size = new Size(201, 32);
             btnBrilho.TabIndex = 5;
@@ -126,7 +133,7 @@
             valorBrilho.Anchor = AnchorStyles.None;
             valorBrilho.BorderStyle = BorderStyle.None;
             valorBrilho.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorBrilho.Location = new Point(1036, 128);
+            valorBrilho.Location = new Point(1037, 79);
             valorBrilho.MinimumSize = new Size(180, 30);
             valorBrilho.Name = "valorBrilho";
             valorBrilho.PlaceholderText = "Valor adicionado";
@@ -139,7 +146,7 @@
             btnNegativo.Anchor = AnchorStyles.None;
             btnNegativo.FlatAppearance.MouseOverBackColor = Color.White;
             btnNegativo.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNegativo.Location = new Point(829, 181);
+            btnNegativo.Location = new Point(830, 125);
             btnNegativo.Name = "btnNegativo";
             btnNegativo.Size = new Size(201, 32);
             btnNegativo.TabIndex = 7;
@@ -152,7 +159,7 @@
             btnContraste.Anchor = AnchorStyles.None;
             btnContraste.FlatAppearance.MouseOverBackColor = Color.White;
             btnContraste.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnContraste.Location = new Point(829, 235);
+            btnContraste.Location = new Point(830, 173);
             btnContraste.Name = "btnContraste";
             btnContraste.Size = new Size(201, 32);
             btnContraste.TabIndex = 8;
@@ -190,7 +197,7 @@
             valorContraste.Anchor = AnchorStyles.None;
             valorContraste.BorderStyle = BorderStyle.None;
             valorContraste.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorContraste.Location = new Point(1036, 235);
+            valorContraste.Location = new Point(1037, 173);
             valorContraste.MinimumSize = new Size(180, 30);
             valorContraste.Name = "valorContraste";
             valorContraste.PlaceholderText = "Valor adicionado";
@@ -203,7 +210,7 @@
             btnSomar.Anchor = AnchorStyles.None;
             btnSomar.FlatAppearance.MouseOverBackColor = Color.White;
             btnSomar.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSomar.Location = new Point(829, 285);
+            btnSomar.Location = new Point(830, 220);
             btnSomar.Name = "btnSomar";
             btnSomar.Size = new Size(201, 32);
             btnSomar.TabIndex = 12;
@@ -216,7 +223,7 @@
             btnBinario.Anchor = AnchorStyles.None;
             btnBinario.FlatAppearance.MouseOverBackColor = Color.White;
             btnBinario.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBinario.Location = new Point(829, 332);
+            btnBinario.Location = new Point(830, 267);
             btnBinario.Name = "btnBinario";
             btnBinario.Size = new Size(201, 32);
             btnBinario.TabIndex = 13;
@@ -224,12 +231,106 @@
             btnBinario.UseVisualStyleBackColor = true;
             btnBinario.Click += btnBinario_Click;
             // 
+            // valorBlending
+            // 
+            valorBlending.Anchor = AnchorStyles.None;
+            valorBlending.BorderStyle = BorderStyle.None;
+            valorBlending.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            valorBlending.Location = new Point(1037, 314);
+            valorBlending.MinimumSize = new Size(180, 30);
+            valorBlending.Name = "valorBlending";
+            valorBlending.PlaceholderText = "Valor do blending";
+            valorBlending.Size = new Size(180, 30);
+            valorBlending.TabIndex = 15;
+            valorBlending.TextAlign = HorizontalAlignment.Center;
+            // 
+            // btnBlending
+            // 
+            btnBlending.Anchor = AnchorStyles.None;
+            btnBlending.FlatAppearance.MouseOverBackColor = Color.White;
+            btnBlending.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBlending.Location = new Point(830, 314);
+            btnBlending.Name = "btnBlending";
+            btnBlending.Size = new Size(201, 32);
+            btnBlending.TabIndex = 14;
+            btnBlending.Text = "Blending";
+            btnBlending.UseVisualStyleBackColor = true;
+            btnBlending.Click += btnBlending_Click;
+            // 
+            // btnNot
+            // 
+            btnNot.Anchor = AnchorStyles.None;
+            btnNot.FlatAppearance.MouseOverBackColor = Color.White;
+            btnNot.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNot.Location = new Point(830, 352);
+            btnNot.Name = "btnNot";
+            btnNot.Size = new Size(79, 32);
+            btnNot.TabIndex = 16;
+            btnNot.Text = "NOT";
+            btnNot.UseVisualStyleBackColor = true;
+            btnNot.Click += btnNot_Click;
+            // 
+            // btnAnd
+            // 
+            btnAnd.Anchor = AnchorStyles.None;
+            btnAnd.FlatAppearance.MouseOverBackColor = Color.White;
+            btnAnd.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAnd.Location = new Point(915, 352);
+            btnAnd.Name = "btnAnd";
+            btnAnd.Size = new Size(79, 32);
+            btnAnd.TabIndex = 17;
+            btnAnd.Text = "AND";
+            btnAnd.UseVisualStyleBackColor = true;
+            // 
+            // btnXor
+            // 
+            btnXor.Anchor = AnchorStyles.None;
+            btnXor.FlatAppearance.MouseOverBackColor = Color.White;
+            btnXor.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXor.Location = new Point(1000, 352);
+            btnXor.Name = "btnXor";
+            btnXor.Size = new Size(79, 32);
+            btnXor.TabIndex = 18;
+            btnXor.Text = "XOR";
+            btnXor.UseVisualStyleBackColor = true;
+            // 
+            // btnOr
+            // 
+            btnOr.Anchor = AnchorStyles.None;
+            btnOr.FlatAppearance.MouseOverBackColor = Color.White;
+            btnOr.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOr.Location = new Point(1085, 352);
+            btnOr.Name = "btnOr";
+            btnOr.Size = new Size(79, 32);
+            btnOr.TabIndex = 19;
+            btnOr.Text = "OR";
+            btnOr.UseVisualStyleBackColor = true;
+            // 
+            // btnHistograma
+            // 
+            btnHistograma.Anchor = AnchorStyles.None;
+            btnHistograma.FlatAppearance.MouseOverBackColor = Color.White;
+            btnHistograma.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHistograma.Location = new Point(830, 400);
+            btnHistograma.Name = "btnHistograma";
+            btnHistograma.Size = new Size(387, 32);
+            btnHistograma.TabIndex = 20;
+            btnHistograma.Text = "Mostrar Histograma";
+            btnHistograma.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(8F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
             ClientSize = new Size(1684, 624);
+            Controls.Add(btnHistograma);
+            Controls.Add(btnOr);
+            Controls.Add(btnXor);
+            Controls.Add(btnAnd);
+            Controls.Add(btnNot);
+            Controls.Add(valorBlending);
+            Controls.Add(btnBlending);
             Controls.Add(btnBinario);
             Controls.Add(btnSomar);
             Controls.Add(valorContraste);
@@ -273,5 +374,12 @@
         private TextBox valorContraste;
         private Button btnSomar;
         private Button btnBinario;
+        private TextBox valorBlending;
+        private Button btnBlending;
+        private Button btnNot;
+        private Button btnAnd;
+        private Button btnXor;
+        private Button btnOr;
+        private Button btnHistograma;
     }
 }
