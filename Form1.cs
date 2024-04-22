@@ -32,6 +32,14 @@ namespace AlteradorDeImagens {
             return destImage;
         }
 
+        private Color Blending(Color pixel1, Color pixel2, int blendValue) {
+            int r = (pixel1.R + pixel2.R) / 2;
+            int g = (pixel1.G + pixel2.G) / 2;
+            int b = (pixel1.B + pixel2.B) / 2;
+
+            return Color.FromArgb(r, g, b);
+        }
+
         public Home() {
             InitializeComponent();
         }
@@ -350,40 +358,24 @@ namespace AlteradorDeImagens {
 
                 bmp2 = ResizeImage(bmp2, width, height);
 
-                Color p;
-                Color p2;
-
                 for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        p = bmp.GetPixel(x, y);
-                        p2 = bmp2.GetPixel(x, y);
-                        int c = valorBlend / 100;
+                        Color pixel1 = bmp.GetPixel(x, y);
+                        Color pixel2 = bmp2.GetPixel(x, y);
 
-                        int a = c * p.A + (1 - c) * p2.A;
-                        int r = c * p.R + (1 - c) * p2.R;
-                        int g = c * p.G + (1 - c) * p2.G;
-                        int b = c * p.B + (1 - c) * p2.B;
+                        // Realize o blending entre os pixels das duas imagens
+                        Color blendedPixel = Blending(pixel1, pixel2, valorBlend);
 
-                        if (a > 255) a = 255;
-                        if (a < 0) a = 0;
-
-                        if (r > 255) r = 255;
-                        if (r < 0) r = 0;
-
-                        if (g > 255) g = 255;
-                        if (g < 0) g = 0;
-
-                        if (b > 255) b = 255;
-                        if (b < 0) b = 0;
-
-                        imagemFinal.SetPixel(x, y, Color.FromArgb(a, red: r, green: g, blue: b));
+                        // Defina o pixel na imagem final
+                        imagemFinal.SetPixel(x, y, blendedPixel);
                     }
                 }
+
+                // Exibir a imagem final no controle PictureBox
                 imgFinal.Image = imagemFinal;
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
