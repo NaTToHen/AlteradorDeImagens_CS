@@ -436,20 +436,7 @@ namespace AlteradorDeImagens {
             }
             catch (Exception ex)
             {
-                /*Bitmap bmp = new Bitmap(imageURL);
-                int width = bmp.Width;
-                int height = bmp.Height;
-
-                Color p;
-
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        p = bmp.GetPixel(x, y);
-                    }
-                }
-                imgFinal.Image = bmp;*/
+                MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
