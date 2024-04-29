@@ -41,16 +41,28 @@
             valorContraste = new TextBox();
             btnSomar = new Button();
             btnBinario = new Button();
-            valorBlending = new TextBox();
             btnBlending = new Button();
             btnNot = new Button();
             btnAnd = new Button();
             btnXor = new Button();
             btnOr = new Button();
             btnHistograma = new Button();
+            panel1 = new Panel();
+            label2 = new Label();
+            panel2 = new Panel();
+            label1 = new Label();
+            button4 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            panel3 = new Panel();
+            button3 = new Button();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // titulo
@@ -74,7 +86,7 @@
             btnImagem1.FlatStyle = FlatStyle.Flat;
             btnImagem1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem1.ForeColor = SystemColors.Control;
-            btnImagem1.Location = new Point(83, 397);
+            btnImagem1.Location = new Point(52, 456);
             btnImagem1.Name = "btnImagem1";
             btnImagem1.Size = new Size(350, 32);
             btnImagem1.TabIndex = 1;
@@ -87,7 +99,7 @@
             imgCarregada.Anchor = AnchorStyles.None;
             imgCarregada.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada.Location = new Point(83, 32);
+            imgCarregada.Location = new Point(52, 91);
             imgCarregada.Name = "imgCarregada";
             imgCarregada.Size = new Size(350, 350);
             imgCarregada.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -99,7 +111,7 @@
             imgFinal.Anchor = AnchorStyles.None;
             imgFinal.BackColor = Color.FromArgb(30, 30, 30);
             imgFinal.BorderStyle = BorderStyle.FixedSingle;
-            imgFinal.Location = new Point(1238, 32);
+            imgFinal.Location = new Point(1244, 91);
             imgFinal.Name = "imgFinal";
             imgFinal.Size = new Size(350, 350);
             imgFinal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -115,7 +127,7 @@
             btnCinza.FlatStyle = FlatStyle.Flat;
             btnCinza.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCinza.ForeColor = SystemColors.Control;
-            btnCinza.Location = new Point(830, 32);
+            btnCinza.Location = new Point(19, 59);
             btnCinza.Name = "btnCinza";
             btnCinza.Size = new Size(201, 32);
             btnCinza.TabIndex = 4;
@@ -132,7 +144,7 @@
             btnBrilho.FlatStyle = FlatStyle.Flat;
             btnBrilho.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBrilho.ForeColor = SystemColors.Control;
-            btnBrilho.Location = new Point(830, 79);
+            btnBrilho.Location = new Point(19, 106);
             btnBrilho.Name = "btnBrilho";
             btnBrilho.Size = new Size(201, 32);
             btnBrilho.TabIndex = 5;
@@ -145,7 +157,7 @@
             valorBrilho.Anchor = AnchorStyles.None;
             valorBrilho.BorderStyle = BorderStyle.None;
             valorBrilho.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorBrilho.Location = new Point(1037, 79);
+            valorBrilho.Location = new Point(226, 106);
             valorBrilho.MinimumSize = new Size(180, 30);
             valorBrilho.Name = "valorBrilho";
             valorBrilho.PlaceholderText = "Valor adicionado";
@@ -162,7 +174,7 @@
             btnNegativo.FlatStyle = FlatStyle.Flat;
             btnNegativo.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNegativo.ForeColor = SystemColors.Control;
-            btnNegativo.Location = new Point(830, 125);
+            btnNegativo.Location = new Point(19, 152);
             btnNegativo.Name = "btnNegativo";
             btnNegativo.Size = new Size(201, 32);
             btnNegativo.TabIndex = 7;
@@ -179,7 +191,7 @@
             btnContraste.FlatStyle = FlatStyle.Flat;
             btnContraste.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnContraste.ForeColor = SystemColors.Control;
-            btnContraste.Location = new Point(830, 173);
+            btnContraste.Location = new Point(19, 200);
             btnContraste.Name = "btnContraste";
             btnContraste.Size = new Size(201, 32);
             btnContraste.TabIndex = 8;
@@ -192,7 +204,7 @@
             imgCarregada2.Anchor = AnchorStyles.None;
             imgCarregada2.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada2.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada2.Location = new Point(452, 32);
+            imgCarregada2.Location = new Point(421, 91);
             imgCarregada2.Name = "imgCarregada2";
             imgCarregada2.Size = new Size(350, 350);
             imgCarregada2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -208,7 +220,7 @@
             btnImagem2.FlatStyle = FlatStyle.Flat;
             btnImagem2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem2.ForeColor = SystemColors.Control;
-            btnImagem2.Location = new Point(452, 397);
+            btnImagem2.Location = new Point(421, 456);
             btnImagem2.Name = "btnImagem2";
             btnImagem2.Size = new Size(350, 32);
             btnImagem2.TabIndex = 9;
@@ -221,7 +233,7 @@
             valorContraste.Anchor = AnchorStyles.None;
             valorContraste.BorderStyle = BorderStyle.None;
             valorContraste.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorContraste.Location = new Point(1037, 173);
+            valorContraste.Location = new Point(226, 200);
             valorContraste.MinimumSize = new Size(180, 30);
             valorContraste.Name = "valorContraste";
             valorContraste.PlaceholderText = "Valor adicionado";
@@ -238,7 +250,7 @@
             btnSomar.FlatStyle = FlatStyle.Flat;
             btnSomar.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSomar.ForeColor = SystemColors.Control;
-            btnSomar.Location = new Point(830, 220);
+            btnSomar.Location = new Point(19, 247);
             btnSomar.Name = "btnSomar";
             btnSomar.Size = new Size(201, 32);
             btnSomar.TabIndex = 12;
@@ -255,26 +267,13 @@
             btnBinario.FlatStyle = FlatStyle.Flat;
             btnBinario.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBinario.ForeColor = SystemColors.Control;
-            btnBinario.Location = new Point(830, 267);
+            btnBinario.Location = new Point(19, 294);
             btnBinario.Name = "btnBinario";
             btnBinario.Size = new Size(201, 32);
             btnBinario.TabIndex = 13;
             btnBinario.Text = "Imagem binaria";
             btnBinario.UseVisualStyleBackColor = false;
             btnBinario.Click += btnBinario_Click;
-            // 
-            // valorBlending
-            // 
-            valorBlending.Anchor = AnchorStyles.None;
-            valorBlending.BorderStyle = BorderStyle.None;
-            valorBlending.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorBlending.Location = new Point(1037, 314);
-            valorBlending.MinimumSize = new Size(180, 30);
-            valorBlending.Name = "valorBlending";
-            valorBlending.PlaceholderText = "Valor do blending";
-            valorBlending.Size = new Size(180, 30);
-            valorBlending.TabIndex = 15;
-            valorBlending.TextAlign = HorizontalAlignment.Center;
             // 
             // btnBlending
             // 
@@ -285,9 +284,9 @@
             btnBlending.FlatStyle = FlatStyle.Flat;
             btnBlending.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBlending.ForeColor = SystemColors.Control;
-            btnBlending.Location = new Point(830, 314);
+            btnBlending.Location = new Point(19, 57);
             btnBlending.Name = "btnBlending";
-            btnBlending.Size = new Size(201, 32);
+            btnBlending.Size = new Size(387, 32);
             btnBlending.TabIndex = 14;
             btnBlending.Text = "Blending";
             btnBlending.UseVisualStyleBackColor = false;
@@ -302,7 +301,7 @@
             btnNot.FlatStyle = FlatStyle.Flat;
             btnNot.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNot.ForeColor = SystemColors.Control;
-            btnNot.Location = new Point(830, 352);
+            btnNot.Location = new Point(19, 95);
             btnNot.Name = "btnNot";
             btnNot.Size = new Size(79, 32);
             btnNot.TabIndex = 16;
@@ -319,7 +318,7 @@
             btnAnd.FlatStyle = FlatStyle.Flat;
             btnAnd.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAnd.ForeColor = SystemColors.Control;
-            btnAnd.Location = new Point(915, 352);
+            btnAnd.Location = new Point(124, 95);
             btnAnd.Name = "btnAnd";
             btnAnd.Size = new Size(79, 32);
             btnAnd.TabIndex = 17;
@@ -336,12 +335,13 @@
             btnXor.FlatStyle = FlatStyle.Flat;
             btnXor.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnXor.ForeColor = SystemColors.Control;
-            btnXor.Location = new Point(1000, 352);
+            btnXor.Location = new Point(229, 95);
             btnXor.Name = "btnXor";
             btnXor.Size = new Size(79, 32);
             btnXor.TabIndex = 18;
             btnXor.Text = "XOR";
             btnXor.UseVisualStyleBackColor = false;
+            btnXor.Click += btnXor_Click;
             // 
             // btnOr
             // 
@@ -352,12 +352,13 @@
             btnOr.FlatStyle = FlatStyle.Flat;
             btnOr.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOr.ForeColor = SystemColors.Control;
-            btnOr.Location = new Point(1085, 352);
+            btnOr.Location = new Point(327, 95);
             btnOr.Name = "btnOr";
             btnOr.Size = new Size(79, 32);
             btnOr.TabIndex = 19;
             btnOr.Text = "OR";
             btnOr.UseVisualStyleBackColor = false;
+            btnOr.Click += btnOr_Click;
             // 
             // btnHistograma
             // 
@@ -368,36 +369,172 @@
             btnHistograma.FlatStyle = FlatStyle.Flat;
             btnHistograma.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHistograma.ForeColor = SystemColors.Control;
-            btnHistograma.Location = new Point(830, 400);
+            btnHistograma.Location = new Point(19, 143);
             btnHistograma.Name = "btnHistograma";
             btnHistograma.Size = new Size(387, 32);
             btnHistograma.TabIndex = 20;
             btnHistograma.Text = "Mostrar Histograma";
             btnHistograma.UseVisualStyleBackColor = false;
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.FromArgb(40, 40, 40);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(btnCinza);
+            panel1.Controls.Add(btnBrilho);
+            panel1.Controls.Add(btnBinario);
+            panel1.Controls.Add(btnSomar);
+            panel1.Controls.Add(valorBrilho);
+            panel1.Controls.Add(valorContraste);
+            panel1.Controls.Add(btnContraste);
+            panel1.Controls.Add(btnNegativo);
+            panel1.Location = new Point(799, 91);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(420, 344);
+            panel1.TabIndex = 21;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top;
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(19, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(387, 25);
+            label2.TabIndex = 24;
+            label2.Text = "Filtros de Cor";
+            label2.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.None;
+            panel2.BackColor = Color.FromArgb(40, 40, 40);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(btnBlending);
+            panel2.Controls.Add(btnHistograma);
+            panel2.Controls.Add(btnNot);
+            panel2.Controls.Add(btnOr);
+            panel2.Controls.Add(btnAnd);
+            panel2.Controls.Add(btnXor);
+            panel2.Location = new Point(799, 456);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(420, 193);
+            panel2.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top;
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(19, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(387, 25);
+            label1.TabIndex = 23;
+            label1.Text = "Operações Logicas";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.None;
+            button4.BackColor = Color.FromArgb(64, 64, 64);
+            button4.FlatAppearance.MouseDownBackColor = Color.White;
+            button4.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.ForeColor = SystemColors.Control;
+            button4.Location = new Point(437, 141);
+            button4.Name = "button4";
+            button4.Size = new Size(79, 32);
+            button4.TabIndex = 19;
+            button4.Text = "OR";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.None;
+            button2.BackColor = Color.FromArgb(64, 64, 64);
+            button2.FlatAppearance.MouseDownBackColor = Color.White;
+            button2.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(16, 137);
+            button2.Name = "button2";
+            button2.Size = new Size(387, 32);
+            button2.TabIndex = 20;
+            button2.Text = "Maximo";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.BackColor = Color.FromArgb(64, 64, 64);
+            button1.FlatAppearance.MouseDownBackColor = Color.White;
+            button1.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.Control;
+            button1.Location = new Point(16, 51);
+            button1.Name = "button1";
+            button1.Size = new Size(387, 32);
+            button1.TabIndex = 14;
+            button1.Text = "Minimo";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // panel3
+            // 
+            panel3.Anchor = AnchorStyles.None;
+            panel3.BackColor = Color.FromArgb(40, 40, 40);
+            panel3.Controls.Add(button3);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(button1);
+            panel3.Controls.Add(button2);
+            panel3.Controls.Add(button4);
+            panel3.Location = new Point(52, 524);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(420, 193);
+            panel3.TabIndex = 24;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.None;
+            button3.BackColor = Color.FromArgb(64, 64, 64);
+            button3.FlatAppearance.MouseDownBackColor = Color.White;
+            button3.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = SystemColors.Control;
+            button3.Location = new Point(16, 93);
+            button3.Name = "button3";
+            button3.Size = new Size(387, 32);
+            button3.TabIndex = 24;
+            button3.Text = "Media";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top;
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(16, 11);
+            label3.Name = "label3";
+            label3.Size = new Size(387, 25);
+            label3.TabIndex = 23;
+            label3.Text = "Convolação";
+            label3.TextAlign = ContentAlignment.TopCenter;
+            // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            ClientSize = new Size(1684, 624);
-            Controls.Add(btnHistograma);
-            Controls.Add(btnOr);
-            Controls.Add(btnXor);
-            Controls.Add(btnAnd);
-            Controls.Add(btnNot);
-            Controls.Add(valorBlending);
-            Controls.Add(btnBlending);
-            Controls.Add(btnBinario);
-            Controls.Add(btnSomar);
-            Controls.Add(valorContraste);
+            ClientSize = new Size(1684, 743);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(imgCarregada2);
             Controls.Add(btnImagem2);
-            Controls.Add(btnContraste);
-            Controls.Add(btnNegativo);
-            Controls.Add(valorBrilho);
-            Controls.Add(btnBrilho);
-            Controls.Add(btnCinza);
             Controls.Add(imgFinal);
             Controls.Add(imgCarregada);
             Controls.Add(btnImagem1);
@@ -411,8 +548,11 @@
             ((System.ComponentModel.ISupportInitialize)imgCarregada).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -431,12 +571,21 @@
         private TextBox valorContraste;
         private Button btnSomar;
         private Button btnBinario;
-        private TextBox valorBlending;
         private Button btnBlending;
         private Button btnNot;
         private Button btnAnd;
         private Button btnXor;
         private Button btnOr;
         private Button btnHistograma;
+        private Panel panel1;
+        private Panel panel2;
+        private Label label2;
+        private Label label1;
+        private Button button4;
+        private Button button2;
+        private Button button1;
+        private Panel panel3;
+        private Button button3;
+        private Label label3;
     }
 }
