@@ -57,12 +57,21 @@
             panel3 = new Panel();
             button3 = new Button();
             label3 = new Label();
+            histogramaTitulo = new Label();
+            panel4 = new Panel();
+            panel5 = new Panel();
+            label4 = new Label();
+            button8 = new Button();
+            histograma1 = new Panel();
+            histograma2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // titulo
@@ -86,7 +95,7 @@
             btnImagem1.FlatStyle = FlatStyle.Flat;
             btnImagem1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem1.ForeColor = SystemColors.Control;
-            btnImagem1.Location = new Point(52, 456);
+            btnImagem1.Location = new Point(53, 414);
             btnImagem1.Name = "btnImagem1";
             btnImagem1.Size = new Size(350, 32);
             btnImagem1.TabIndex = 1;
@@ -99,7 +108,7 @@
             imgCarregada.Anchor = AnchorStyles.None;
             imgCarregada.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada.Location = new Point(52, 91);
+            imgCarregada.Location = new Point(53, 49);
             imgCarregada.Name = "imgCarregada";
             imgCarregada.Size = new Size(350, 350);
             imgCarregada.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -111,7 +120,7 @@
             imgFinal.Anchor = AnchorStyles.None;
             imgFinal.BackColor = Color.FromArgb(30, 30, 30);
             imgFinal.BorderStyle = BorderStyle.FixedSingle;
-            imgFinal.Location = new Point(1244, 91);
+            imgFinal.Location = new Point(1245, 49);
             imgFinal.Name = "imgFinal";
             imgFinal.Size = new Size(350, 350);
             imgFinal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -204,7 +213,7 @@
             imgCarregada2.Anchor = AnchorStyles.None;
             imgCarregada2.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada2.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada2.Location = new Point(421, 91);
+            imgCarregada2.Location = new Point(422, 49);
             imgCarregada2.Name = "imgCarregada2";
             imgCarregada2.Size = new Size(350, 350);
             imgCarregada2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -220,7 +229,7 @@
             btnImagem2.FlatStyle = FlatStyle.Flat;
             btnImagem2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem2.ForeColor = SystemColors.Control;
-            btnImagem2.Location = new Point(421, 456);
+            btnImagem2.Location = new Point(422, 414);
             btnImagem2.Name = "btnImagem2";
             btnImagem2.Size = new Size(350, 32);
             btnImagem2.TabIndex = 9;
@@ -375,6 +384,7 @@
             btnHistograma.TabIndex = 20;
             btnHistograma.Text = "Mostrar Histograma";
             btnHistograma.UseVisualStyleBackColor = false;
+            btnHistograma.Click += btnHistograma_Click;
             // 
             // panel1
             // 
@@ -389,7 +399,7 @@
             panel1.Controls.Add(valorContraste);
             panel1.Controls.Add(btnContraste);
             panel1.Controls.Add(btnNegativo);
-            panel1.Location = new Point(799, 91);
+            panel1.Location = new Point(800, 49);
             panel1.Name = "panel1";
             panel1.Size = new Size(420, 344);
             panel1.TabIndex = 21;
@@ -417,7 +427,7 @@
             panel2.Controls.Add(btnOr);
             panel2.Controls.Add(btnAnd);
             panel2.Controls.Add(btnXor);
-            panel2.Location = new Point(799, 456);
+            panel2.Location = new Point(800, 414);
             panel2.Name = "panel2";
             panel2.Size = new Size(420, 193);
             panel2.TabIndex = 22;
@@ -491,7 +501,7 @@
             panel3.Controls.Add(button1);
             panel3.Controls.Add(button2);
             panel3.Controls.Add(button4);
-            panel3.Location = new Point(52, 524);
+            panel3.Location = new Point(800, 626);
             panel3.Name = "panel3";
             panel3.Size = new Size(420, 193);
             panel3.TabIndex = 24;
@@ -524,12 +534,93 @@
             label3.Text = "Convolação";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
+            // histogramaTitulo
+            // 
+            histogramaTitulo.Anchor = AnchorStyles.Top;
+            histogramaTitulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            histogramaTitulo.ForeColor = Color.White;
+            histogramaTitulo.Location = new Point(169, 7);
+            histogramaTitulo.Name = "histogramaTitulo";
+            histogramaTitulo.Size = new Size(387, 25);
+            histogramaTitulo.TabIndex = 25;
+            histogramaTitulo.Text = "Graficos";
+            histogramaTitulo.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.FromArgb(40, 40, 40);
+            panel4.Controls.Add(histograma2);
+            panel4.Controls.Add(histograma1);
+            panel4.Controls.Add(histogramaTitulo);
+            panel4.Location = new Point(53, 471);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(719, 348);
+            panel4.TabIndex = 24;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.None;
+            panel5.BackColor = Color.FromArgb(40, 40, 40);
+            panel5.Controls.Add(label4);
+            panel5.Controls.Add(button8);
+            panel5.Location = new Point(1245, 414);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(350, 405);
+            panel5.TabIndex = 25;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top;
+            label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(21, 16);
+            label4.Name = "label4";
+            label4.Size = new Size(310, 25);
+            label4.TabIndex = 23;
+            label4.Text = "Convolação";
+            label4.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // button8
+            // 
+            button8.Anchor = AnchorStyles.None;
+            button8.BackColor = Color.FromArgb(64, 64, 64);
+            button8.FlatAppearance.MouseDownBackColor = Color.White;
+            button8.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button8.ForeColor = SystemColors.Control;
+            button8.Location = new Point(512, 293);
+            button8.Name = "button8";
+            button8.Size = new Size(79, 32);
+            button8.TabIndex = 19;
+            button8.Text = "OR";
+            button8.UseVisualStyleBackColor = false;
+            // 
+            // histograma1
+            // 
+            histograma1.BackColor = Color.FromArgb(20, 20, 20);
+            histograma1.Location = new Point(22, 58);
+            histograma1.Name = "histograma1";
+            histograma1.Size = new Size(328, 252);
+            histograma1.TabIndex = 26;
+            // 
+            // histograma2
+            // 
+            histograma2.BackColor = Color.FromArgb(20, 20, 20);
+            histograma2.Location = new Point(369, 58);
+            histograma2.Name = "histograma2";
+            histograma2.Size = new Size(328, 252);
+            histograma2.TabIndex = 27;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            ClientSize = new Size(1684, 743);
+            ClientSize = new Size(1684, 909);
+            Controls.Add(panel5);
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -552,6 +643,8 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -587,5 +680,12 @@
         private Panel panel3;
         private Button button3;
         private Label label3;
+        private Label histogramaTitulo;
+        private Panel panel4;
+        private Panel panel5;
+        private Label label4;
+        private Button button8;
+        private Panel histograma2;
+        private Panel histograma1;
     }
 }

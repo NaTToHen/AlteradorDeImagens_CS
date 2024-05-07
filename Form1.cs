@@ -2,6 +2,8 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+//using System.Runtime.Intrinsics.X86;
+//using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlteradorDeImagens {
 
@@ -572,6 +574,28 @@ namespace AlteradorDeImagens {
             catch (Exception ex)
             {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnHistograma_Click(object sender, EventArgs e) {
+            try
+            {
+                Bitmap bmp = new Bitmap(imageURL);
+                Bitmap bmp2 = new Bitmap(imageURL2);
+                Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+                int width = bmp.Width;
+                int height = bmp.Height;
+
+                bmp2 = ResizeImage(bmp2, width, height);
+
+                // Criar painéis para os histogramas (se necessário)
+                Panel histo1 = histograma1; // Assuma que você inicializou os painéis corretamente
+                Panel histo2 = histograma2;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insira a imagem, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
