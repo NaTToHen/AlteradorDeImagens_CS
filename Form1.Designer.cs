@@ -52,18 +52,18 @@
             panel2 = new Panel();
             label1 = new Label();
             button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnMaximo = new Button();
+            btnMinimo = new Button();
             panel3 = new Panel();
-            button3 = new Button();
+            btnMedia = new Button();
             label3 = new Label();
             histogramaTitulo = new Label();
             panel4 = new Panel();
+            histograma2 = new Panel();
+            histograma1 = new Panel();
             panel5 = new Panel();
             label4 = new Label();
             button8 = new Button();
-            histograma1 = new Panel();
-            histograma2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
@@ -460,67 +460,70 @@
             button4.Text = "OR";
             button4.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnMaximo
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = Color.FromArgb(64, 64, 64);
-            button2.FlatAppearance.MouseDownBackColor = Color.White;
-            button2.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(16, 137);
-            button2.Name = "button2";
-            button2.Size = new Size(387, 32);
-            button2.TabIndex = 20;
-            button2.Text = "Maximo";
-            button2.UseVisualStyleBackColor = false;
+            btnMaximo.Anchor = AnchorStyles.None;
+            btnMaximo.BackColor = Color.FromArgb(64, 64, 64);
+            btnMaximo.FlatAppearance.MouseDownBackColor = Color.White;
+            btnMaximo.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnMaximo.FlatStyle = FlatStyle.Flat;
+            btnMaximo.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMaximo.ForeColor = SystemColors.Control;
+            btnMaximo.Location = new Point(16, 137);
+            btnMaximo.Name = "btnMaximo";
+            btnMaximo.Size = new Size(387, 32);
+            btnMaximo.TabIndex = 20;
+            btnMaximo.Text = "Maximo";
+            btnMaximo.UseVisualStyleBackColor = false;
+            btnMaximo.Click += btnMaximo_Click;
             // 
-            // button1
+            // btnMinimo
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.BackColor = Color.FromArgb(64, 64, 64);
-            button1.FlatAppearance.MouseDownBackColor = Color.White;
-            button1.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.Control;
-            button1.Location = new Point(16, 51);
-            button1.Name = "button1";
-            button1.Size = new Size(387, 32);
-            button1.TabIndex = 14;
-            button1.Text = "Minimo";
-            button1.UseVisualStyleBackColor = false;
+            btnMinimo.Anchor = AnchorStyles.None;
+            btnMinimo.BackColor = Color.FromArgb(64, 64, 64);
+            btnMinimo.FlatAppearance.MouseDownBackColor = Color.White;
+            btnMinimo.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnMinimo.FlatStyle = FlatStyle.Flat;
+            btnMinimo.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMinimo.ForeColor = SystemColors.Control;
+            btnMinimo.Location = new Point(16, 51);
+            btnMinimo.Name = "btnMinimo";
+            btnMinimo.Size = new Size(387, 32);
+            btnMinimo.TabIndex = 14;
+            btnMinimo.Text = "Minimo";
+            btnMinimo.UseVisualStyleBackColor = false;
+            btnMinimo.Click += btnMinimo_Click;
             // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.FromArgb(40, 40, 40);
-            panel3.Controls.Add(button3);
+            panel3.Controls.Add(btnMedia);
             panel3.Controls.Add(label3);
-            panel3.Controls.Add(button1);
-            panel3.Controls.Add(button2);
+            panel3.Controls.Add(btnMinimo);
+            panel3.Controls.Add(btnMaximo);
             panel3.Controls.Add(button4);
             panel3.Location = new Point(800, 626);
             panel3.Name = "panel3";
             panel3.Size = new Size(420, 193);
             panel3.TabIndex = 24;
             // 
-            // button3
+            // btnMedia
             // 
-            button3.Anchor = AnchorStyles.None;
-            button3.BackColor = Color.FromArgb(64, 64, 64);
-            button3.FlatAppearance.MouseDownBackColor = Color.White;
-            button3.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.Control;
-            button3.Location = new Point(16, 93);
-            button3.Name = "button3";
-            button3.Size = new Size(387, 32);
-            button3.TabIndex = 24;
-            button3.Text = "Media";
-            button3.UseVisualStyleBackColor = false;
+            btnMedia.Anchor = AnchorStyles.None;
+            btnMedia.BackColor = Color.FromArgb(64, 64, 64);
+            btnMedia.FlatAppearance.MouseDownBackColor = Color.White;
+            btnMedia.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnMedia.FlatStyle = FlatStyle.Flat;
+            btnMedia.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMedia.ForeColor = SystemColors.Control;
+            btnMedia.Location = new Point(16, 93);
+            btnMedia.Name = "btnMedia";
+            btnMedia.Size = new Size(387, 32);
+            btnMedia.TabIndex = 24;
+            btnMedia.Text = "Media";
+            btnMedia.UseVisualStyleBackColor = false;
+            btnMedia.Click += btnMedia_Click;
             // 
             // label3
             // 
@@ -557,6 +560,22 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(719, 348);
             panel4.TabIndex = 24;
+            // 
+            // histograma2
+            // 
+            histograma2.BackColor = Color.FromArgb(20, 20, 20);
+            histograma2.Location = new Point(369, 58);
+            histograma2.Name = "histograma2";
+            histograma2.Size = new Size(328, 252);
+            histograma2.TabIndex = 27;
+            // 
+            // histograma1
+            // 
+            histograma1.BackColor = Color.FromArgb(20, 20, 20);
+            histograma1.Location = new Point(22, 58);
+            histograma1.Name = "histograma1";
+            histograma1.Size = new Size(328, 252);
+            histograma1.TabIndex = 26;
             // 
             // panel5
             // 
@@ -596,22 +615,6 @@
             button8.TabIndex = 19;
             button8.Text = "OR";
             button8.UseVisualStyleBackColor = false;
-            // 
-            // histograma1
-            // 
-            histograma1.BackColor = Color.FromArgb(20, 20, 20);
-            histograma1.Location = new Point(22, 58);
-            histograma1.Name = "histograma1";
-            histograma1.Size = new Size(328, 252);
-            histograma1.TabIndex = 26;
-            // 
-            // histograma2
-            // 
-            histograma2.BackColor = Color.FromArgb(20, 20, 20);
-            histograma2.Location = new Point(369, 58);
-            histograma2.Name = "histograma2";
-            histograma2.Size = new Size(328, 252);
-            histograma2.TabIndex = 27;
             // 
             // Home
             // 
@@ -675,10 +678,10 @@
         private Label label2;
         private Label label1;
         private Button button4;
-        private Button button2;
-        private Button button1;
+        private Button btnMaximo;
+        private Button btnMinimo;
         private Panel panel3;
-        private Button button3;
+        private Button btnMedia;
         private Label label3;
         private Label histogramaTitulo;
         private Panel panel4;

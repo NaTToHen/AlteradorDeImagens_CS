@@ -598,5 +598,184 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira a imagem, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+        private void btnMinimo_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+            Bitmap bmp2 = new Bitmap(imageURL2);
+            Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+            int[,] kernel = new int[,] { { -1, -1, -1 }, { -1, 0, -1 }, { -1, -1, -1 } };
+
+            int width = bmp.Width;
+            int height = bmp.Height;
+
+            bmp2 = ResizeImage(bmp2, width, height);
+
+            imgFinal.Image = AplicarFiltroMinimo(bmp, bmp2, kernel);
+        }
+        
+        private void btnMedia_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+            Bitmap bmp2 = new Bitmap(imageURL2);
+            Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+            int[,] kernel = new int[,] { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+
+            int width = bmp.Width;
+            int height = bmp.Height;
+
+            bmp2 = ResizeImage(bmp2, width, height);
+            imgFinal.Image = AplicarFiltroMedia(bmp, bmp2, kernel);
+        }
+
+        private void btnMaximo_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+            Bitmap bmp2 = new Bitmap(imageURL2);
+            Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+            int[,] kernel = new int[,] { { -1, -1, -1 }, { -1, 0, -1 }, { -1, -1, -1 } };
+
+            int width = bmp.Width;
+            int height = bmp.Height;
+
+            bmp2 = ResizeImage(bmp2, width, height);
+
+            imgFinal.Image = AplicarFiltroMinimo(bmp, bmp2, kernel);
+        }
+
+        /*private Bitmap AplicarFiltroMinimo(Bitmap imagem1, Bitmap imagem2, int[,] kernel) {
+            int largura = imagem1.Width;
+            int altura = imagem1.Height;
+            Bitmap imagemFinal = new Bitmap(largura, altura);
+
+            for (int x = 0; x < largura; x++)
+            {
+                for (int y = 0; y < altura; y++)
+                {
+                    int valorMinimo = int.MaxValue;
+
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        for (int j = -1; j <= 1; j++)
+                        {
+                            int xConv = x + i;
+                            int yConv = y + j;
+
+                            if (xConv >= 0 && xConv < largura && yConv >= 0 && yConv < altura)
+                            {
+                                int valorPixel1 = imagem1.GetPixel(xConv, yConv).R;
+                                int valorPixel2 = imagem2.GetPixel(xConv, yConv).R;
+                                valorMinimo = Math.Min(valorMinimo, Math.Min(valorPixel1, valorPixel2));
+                            }
+                        }
+                    }
+                    imagemFinal.SetPixel(x, y, Color.FromArgb(valorMinimo, valorMinimo, valorMinimo));
+                }
+            }
+            return imagemFinal;
+        }*/
+
+        private Bitmap AplicarFiltroMinimo(Bitmap bmp1, Bitmap bmp2, int[,] kernel) {
+            int width = bmp1.Width;
+            int height = bmp1.Height;
+            Bitmap imagemFinal = new Bitmap(width, height);
+
+            int kernelWidth = kernel.GetLength(1);
+            int kernelHeight = kernel.GetLength(0);
+            int kernelOffsetX = kernelWidth / 2;
+            int kernelOffsetY = kernelHeight / 2;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    int minValue = int.MaxValue;
+
+                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    {
+                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        {
+                            int pixelPosX = x + kx;
+                            int pixelPosY = y + ky;
+
+                            if (pixelPosX >= 0 && pixelPosX < width && pixelPosY >= 0 && pixelPosY < height)
+                            {
+                                Color color1 = bmp1.GetPixel(pixelPosX, pixelPosY);
+                                Color color2 = bmp2.GetPixel(pixelPosX, pixelPosY);
+
+                                int value1 = (color1.R + color1.G + color1.B) / 3;
+                                int value2 = (color2.R + color2.G + color2.B) / 3;
+
+                                int minValueInWindow = Math.Min(value1, value2);
+
+                                if (minValueInWindow < minValue)
+                                {
+                                    minValue = minValueInWindow;
+                                }
+                            }
+                        }
+                    }
+                    Color finalColor = Color.FromArgb(minValue, minValue, minValue);
+                    imagemFinal.SetPixel(x, y, finalColor);
+                }
+            }
+
+            return imagemFinal;
+        }
+
+        private Bitmap AplicarFiltroMedia(Bitmap bmp1, Bitmap bmp2, int[,] kernel) {
+            int width = bmp1.Width;
+            int height = bmp1.Height;
+            Bitmap imagemFinal = new Bitmap(width, height);
+
+            int kernelWidth = kernel.GetLength(1);
+            int kernelHeight = kernel.GetLength(0);
+            int kernelOffsetX = kernelWidth / 2;
+            int kernelOffsetY = kernelHeight / 2;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    int sumR = 0, sumG = 0, sumB = 0;
+                    int count = 0;
+
+                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    {
+                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        {
+                            int pixelPosX = x + kx;
+                            int pixelPosY = y + ky;
+
+                            if (pixelPosX >= 0 && pixelPosX < width && pixelPosY >= 0 && pixelPosY < height)
+                            {
+                                Color color1 = bmp1.GetPixel(pixelPosX, pixelPosY);
+                                Color color2 = bmp2.GetPixel(pixelPosX, pixelPosY);
+
+                                int avgR = (color1.R + color2.R) / 2;
+                                int avgG = (color1.G + color2.G) / 2;
+                                int avgB = (color1.B + color2.B) / 2;
+
+                                sumR += avgR;
+                                sumG += avgG;
+                                sumB += avgB;
+                                count++;
+                            }
+                        }
+                    }
+
+                    int mediaR = sumR / count;
+                    int mediaG = sumG / count;
+                    int mediaB = sumB / count;
+
+                    Color finalColor = Color.FromArgb(mediaR, mediaG, mediaB);
+                    imagemFinal.SetPixel(x, y, finalColor);
+                }
+            }
+
+            return imagemFinal;
+        }   
     }
 }
