@@ -615,7 +615,7 @@ namespace AlteradorDeImagens {
 
             imgFinal.Image = AplicarFiltroMinimo(bmp, bmp2, kernel);
         }
-        
+
         private void btnMedia_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
             Bitmap bmp2 = new Bitmap(imageURL2);
@@ -776,6 +776,10 @@ namespace AlteradorDeImagens {
             }
 
             return imagemFinal;
-        }   
+        }
+
+        private void label4_Click(object sender, EventArgs e) {
+
+        }
     }
 }
