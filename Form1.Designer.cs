@@ -55,6 +55,8 @@
             btnMaximo = new Button();
             btnMinimo = new Button();
             panel3 = new Panel();
+            btnOrdem = new Button();
+            btnMediana = new Button();
             btnMedia = new Button();
             label3 = new Label();
             histogramaTitulo = new Label();
@@ -67,8 +69,6 @@
             imgFiltro = new PictureBox();
             label4 = new Label();
             button8 = new Button();
-            btnMediana = new Button();
-            btnOrdem = new Button();
             ((System.ComponentModel.ISupportInitialize)imgCarregada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgFinal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarregada2).BeginInit();
@@ -516,6 +516,40 @@
             panel3.Size = new Size(420, 193);
             panel3.TabIndex = 24;
             // 
+            // btnOrdem
+            // 
+            btnOrdem.Anchor = AnchorStyles.None;
+            btnOrdem.BackColor = Color.FromArgb(64, 64, 64);
+            btnOrdem.FlatAppearance.MouseDownBackColor = Color.White;
+            btnOrdem.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnOrdem.FlatStyle = FlatStyle.Flat;
+            btnOrdem.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOrdem.ForeColor = SystemColors.Control;
+            btnOrdem.Location = new Point(217, 141);
+            btnOrdem.Name = "btnOrdem";
+            btnOrdem.Size = new Size(186, 32);
+            btnOrdem.TabIndex = 26;
+            btnOrdem.Text = "Ordem";
+            btnOrdem.UseVisualStyleBackColor = false;
+            btnOrdem.Click += btnOrdem_Click;
+            // 
+            // btnMediana
+            // 
+            btnMediana.Anchor = AnchorStyles.None;
+            btnMediana.BackColor = Color.FromArgb(64, 64, 64);
+            btnMediana.FlatAppearance.MouseDownBackColor = Color.White;
+            btnMediana.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnMediana.FlatStyle = FlatStyle.Flat;
+            btnMediana.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMediana.ForeColor = SystemColors.Control;
+            btnMediana.Location = new Point(16, 141);
+            btnMediana.Name = "btnMediana";
+            btnMediana.Size = new Size(187, 32);
+            btnMediana.TabIndex = 25;
+            btnMediana.Text = "Mediana";
+            btnMediana.UseVisualStyleBackColor = false;
+            btnMediana.Click += btnMediana_Click;
+            // 
             // btnMedia
             // 
             btnMedia.Anchor = AnchorStyles.None;
@@ -651,7 +685,6 @@
             label4.TabIndex = 23;
             label4.Text = "Filtro Gaussiano";
             label4.TextAlign = ContentAlignment.TopCenter;
-            label4.Click += label4_Click;
             // 
             // button8
             // 
@@ -669,44 +702,12 @@
             button8.Text = "OR";
             button8.UseVisualStyleBackColor = false;
             // 
-            // btnMediana
-            // 
-            btnMediana.Anchor = AnchorStyles.None;
-            btnMediana.BackColor = Color.FromArgb(64, 64, 64);
-            btnMediana.FlatAppearance.MouseDownBackColor = Color.White;
-            btnMediana.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            btnMediana.FlatStyle = FlatStyle.Flat;
-            btnMediana.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMediana.ForeColor = SystemColors.Control;
-            btnMediana.Location = new Point(16, 141);
-            btnMediana.Name = "btnMediana";
-            btnMediana.Size = new Size(187, 32);
-            btnMediana.TabIndex = 25;
-            btnMediana.Text = "Mediana";
-            btnMediana.UseVisualStyleBackColor = false;
-            // 
-            // btnOrdem
-            // 
-            btnOrdem.Anchor = AnchorStyles.None;
-            btnOrdem.BackColor = Color.FromArgb(64, 64, 64);
-            btnOrdem.FlatAppearance.MouseDownBackColor = Color.White;
-            btnOrdem.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            btnOrdem.FlatStyle = FlatStyle.Flat;
-            btnOrdem.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnOrdem.ForeColor = SystemColors.Control;
-            btnOrdem.Location = new Point(217, 141);
-            btnOrdem.Name = "btnOrdem";
-            btnOrdem.Size = new Size(186, 32);
-            btnOrdem.TabIndex = 26;
-            btnOrdem.Text = "Ordem";
-            btnOrdem.UseVisualStyleBackColor = false;
-            // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(10F, 18F);
+            AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            ClientSize = new Size(1902, 1033);
+            ClientSize = new Size(1684, 1031);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
