@@ -341,6 +341,8 @@ namespace AlteradorDeImagens {
             }
         }
 
+        //------------------------ Operadores logicos ----------------------------------
+
         private void btnBlending_Click(object sender, EventArgs e) {
             try
             {
@@ -434,7 +436,6 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnAnd_Click(object sender, EventArgs e) {
             try
             {
@@ -484,7 +485,6 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnXor_Click(object sender, EventArgs e) {
             try
             {
@@ -530,7 +530,6 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnOr_Click(object sender, EventArgs e) {
             try
             {
@@ -576,7 +575,6 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnHistograma_Click(object sender, EventArgs e) {
             try
             {
@@ -599,8 +597,6 @@ namespace AlteradorDeImagens {
             }
         }
 
-
-
         private void btnMinimo_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
             //Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
@@ -609,6 +605,8 @@ namespace AlteradorDeImagens {
 
             imgFinal.Image = AplicarFiltroMinimo(bmp, kernel);
         }
+
+        //------------------------ Realçe de imagens ----------------------------------
 
         private void btnMedia_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
@@ -621,7 +619,6 @@ namespace AlteradorDeImagens {
 
         private void btnMaximo_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
-            //Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
 
             int[,] kernel = new int[,] { { -1, -1, -1 }, { -1, 0, -1 }, { -1, -1, -1 } };
 
@@ -630,7 +627,7 @@ namespace AlteradorDeImagens {
 
         private void btnOrdem_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
-            int ordem = 4; // Por exemplo, ordem = 4 para pegar o 5º menor valor em uma matriz 3x3
+            int ordem = 4;
             imgFinal.Image = AplicarFiltroDeOrdem(bmp, ordem);
         }
 
@@ -646,8 +643,8 @@ namespace AlteradorDeImagens {
 
             int kernelWidth = kernel.GetLength(1);
             int kernelHeight = kernel.GetLength(0);
-            int kernelOffsetX = kernelWidth / 2;
-            int kernelOffsetY = kernelHeight / 2;
+            int kernelX = kernelWidth / 2;
+            int kernelY = kernelHeight / 2;
 
             for (int y = 0; y < height; y++)
             {
@@ -655,9 +652,9 @@ namespace AlteradorDeImagens {
                 {
                     int minValue = int.MaxValue;
 
-                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    for (int ky = -kernelY; ky <= kernelY; ky++)
                     {
-                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        for (int kx = -kernelX; kx <= kernelX; kx++)
                         {
                             int pixelPosX = x + kx;
                             int pixelPosY = y + ky;
@@ -689,8 +686,8 @@ namespace AlteradorDeImagens {
 
             int kernelWidth = kernel.GetLength(1);
             int kernelHeight = kernel.GetLength(0);
-            int kernelOffsetX = kernelWidth / 2;
-            int kernelOffsetY = kernelHeight / 2;
+            int kernelX = kernelWidth / 2;
+            int kernelY = kernelHeight / 2;
 
             for (int y = 0; y < height; y++)
             {
@@ -699,9 +696,9 @@ namespace AlteradorDeImagens {
                     int sum = 0;
                     int count = 0;
 
-                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    for (int ky = -kernelY; ky <= kernelY; ky++)
                     {
-                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        for (int kx = -kernelX; kx <= kernelX; kx++)
                         {
                             int pixelPosX = x + kx;
                             int pixelPosY = y + ky;
@@ -733,8 +730,8 @@ namespace AlteradorDeImagens {
 
             int kernelWidth = kernel.GetLength(1);
             int kernelHeight = kernel.GetLength(0);
-            int kernelOffsetX = kernelWidth / 2;
-            int kernelOffsetY = kernelHeight / 2;
+            int kernelX = kernelWidth / 2;
+            int kernelY = kernelHeight / 2;
 
             for (int y = 0; y < height; y++)
             {
@@ -742,9 +739,9 @@ namespace AlteradorDeImagens {
                 {
                     int maxValue = int.MinValue;
 
-                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    for (int ky = -kernelY; ky <= kernelY; ky++)
                     {
-                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        for (int kx = -kernelX; kx <= kernelX; kx++)
                         {
                             int pixelPosX = x + kx;
                             int pixelPosY = y + ky;
@@ -778,8 +775,8 @@ namespace AlteradorDeImagens {
 
             int kernelWidth = kernel.GetLength(1);
             int kernelHeight = kernel.GetLength(0);
-            int kernelOffsetX = kernelWidth / 2;
-            int kernelOffsetY = kernelHeight / 2;
+            int kernelX = kernelWidth / 2;
+            int kernelY = kernelHeight / 2;
 
             for (int y = 0; y < height; y++)
             {
@@ -787,9 +784,9 @@ namespace AlteradorDeImagens {
                 {
                     List<int> valores = new List<int>();
 
-                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    for (int ky = -kernelY; ky <= kernelY; ky++)
                     {
-                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        for (int kx = -kernelX; kx <= kernelX; kx++)
                         {
                             int pixelPosX = x + kx;
                             int pixelPosY = y + ky;
@@ -824,8 +821,8 @@ namespace AlteradorDeImagens {
 
             int kernelWidth = kernel.GetLength(1);
             int kernelHeight = kernel.GetLength(0);
-            int kernelOffsetX = kernelWidth / 2;
-            int kernelOffsetY = kernelHeight / 2;
+            int kernelX = kernelWidth / 2;
+            int kernelY = kernelHeight / 2;
 
             for (int y = 0; y < height; y++)
             {
@@ -833,9 +830,9 @@ namespace AlteradorDeImagens {
                 {
                     List<int> valores = new List<int>();
 
-                    for (int ky = -kernelOffsetY; ky <= kernelOffsetY; ky++)
+                    for (int ky = -kernelY; ky <= kernelY; ky++)
                     {
-                        for (int kx = -kernelOffsetX; kx <= kernelOffsetX; kx++)
+                        for (int kx = -kernelX; kx <= kernelX; kx++)
                         {
                             int pixelPosX = x + kx;
                             int pixelPosY = y + ky;
@@ -857,8 +854,63 @@ namespace AlteradorDeImagens {
                     imagemFinal.SetPixel(x, y, finalColor);
                 }
             }
-
             return imagemFinal;
+        }
+
+        //------------------------ Detecção de Bordas ----------------------------------
+
+        private void btnSobel_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+            //Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+            int[][] sobelX = {
+                new int[] {-1, 0, 1},
+                new int[] {-2, 0, 2},
+                new int[] {-1, 0, 1}
+            };
+
+            int[][] sobelY = {
+                new int[] {-1, -2, -1},
+                new int[] { 0, 0, 0},
+                new int[] { 1, 2, 1}
+            };
+
+            imgFinal.Image = AplicarSobel(bmp, sobelX, sobelY);
+        }
+
+        private Bitmap AplicarSobel(Bitmap bmp,  int[][] sobelx, int[][]sobely) {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            Bitmap imageFinal = new Bitmap(width, height);
+
+            Color p;
+
+
+
+                    for (int i = 1; i < width-1; i++)
+                    {
+                        for (int j = 1; j < height-1; j++)
+                        {
+                            int dx = bmp.GetPixel(i - 1, j - 1).R * sobelx[0][0] + bmp.GetPixel(i, j - 1).R * sobelx[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobelx[0][2]
+                              + bmp.GetPixel(i - 1, j).R * sobelx[1][0] + bmp.GetPixel(i, j).R * sobelx[1][1] + bmp.GetPixel(i + 1, j).R * sobelx[1][2]
+                              + bmp.GetPixel(i - 1, j + 1).R * sobelx[2][0] + bmp.GetPixel(i, j + 1).R * sobelx[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobelx[2][2];
+
+                            int dy = bmp.GetPixel(i - 1, j - 1).R * sobely[0][0] + bmp.GetPixel(i, j - 1).R * sobely[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobely[0][2]
+                                   + bmp.GetPixel(i - 1, j).R * sobely[1][0] + bmp.GetPixel(i, j).R * sobely[1][1] + bmp.GetPixel(i + 1, j).R * sobely[1][2]
+                                   + bmp.GetPixel(i - 1, j + 1).R * sobely[2][0] + bmp.GetPixel(i, j + 1).R * sobely[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobely[2][2];
+                            double derivata = Math.Sqrt((dx * dx) + (dy * dy));
+
+                            if (derivata > 255)
+                            {
+                                imageFinal.SetPixel(i, j, Color.White);
+                            }
+                            else
+                            {
+                                imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)derivata, (int)derivata, (int)derivata));
+                            }
+                        }
+                    }
+            return imageFinal;
         }
     }
 }
