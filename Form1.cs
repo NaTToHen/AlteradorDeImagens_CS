@@ -878,39 +878,265 @@ namespace AlteradorDeImagens {
             imgFinal.Image = AplicarSobel(bmp, sobelX, sobelY);
         }
 
-        private Bitmap AplicarSobel(Bitmap bmp,  int[][] sobelx, int[][]sobely) {
+        private void btnPrewitt_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+
+            int[][] prewittX = {
+                new int[] {-1, 0, 1},
+                new int[] {-1, 0, 1},
+                new int[] {-1, 0, 1}
+            };
+
+            int[][] prewittY = {
+                new int[] {-1, -1, -1},
+                new int[] { 0, 0, 0},
+                new int[] { 1, 1, 1}
+            };
+
+            imgFinal.Image = AplicarPrewitt(bmp, prewittX, prewittY);
+        }
+
+        private void btnLaplaciano_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+
+            int[][] laplacian = {
+                new int[] { 0,  1, 0 },
+                new int[] { 1, -4, 1 },
+                new int[] { 0,  1, 0 }
+            };
+
+            imgFinal.Image = AplicarLaplaciano(bmp, laplacian);
+        }
+
+        private Bitmap AplicarSobel(Bitmap bmp, int[][] sobelx, int[][] sobely) {
             int width = bmp.Width;
             int height = bmp.Height;
             Bitmap imageFinal = new Bitmap(width, height);
 
             Color p;
+            for (int i = 1; i < width - 1; i++)
+            {
+                for (int j = 1; j < height - 1; j++)
+                {
+                    int dx = bmp.GetPixel(i - 1, j - 1).R * sobelx[0][0] + bmp.GetPixel(i, j - 1).R * sobelx[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobelx[0][2]
+                      + bmp.GetPixel(i - 1, j).R * sobelx[1][0] + bmp.GetPixel(i, j).R * sobelx[1][1] + bmp.GetPixel(i + 1, j).R * sobelx[1][2]
+                      + bmp.GetPixel(i - 1, j + 1).R * sobelx[2][0] + bmp.GetPixel(i, j + 1).R * sobelx[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobelx[2][2];
 
+                    int dy = bmp.GetPixel(i - 1, j - 1).R * sobely[0][0] + bmp.GetPixel(i, j - 1).R * sobely[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobely[0][2]
+                           + bmp.GetPixel(i - 1, j).R * sobely[1][0] + bmp.GetPixel(i, j).R * sobely[1][1] + bmp.GetPixel(i + 1, j).R * sobely[1][2]
+                           + bmp.GetPixel(i - 1, j + 1).R * sobely[2][0] + bmp.GetPixel(i, j + 1).R * sobely[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobely[2][2];
+                    double derivata = Math.Sqrt((dx * dx) + (dy * dy));
 
-
-                    for (int i = 1; i < width-1; i++)
+                    if (derivata > 255)
                     {
-                        for (int j = 1; j < height-1; j++)
-                        {
-                            int dx = bmp.GetPixel(i - 1, j - 1).R * sobelx[0][0] + bmp.GetPixel(i, j - 1).R * sobelx[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobelx[0][2]
-                              + bmp.GetPixel(i - 1, j).R * sobelx[1][0] + bmp.GetPixel(i, j).R * sobelx[1][1] + bmp.GetPixel(i + 1, j).R * sobelx[1][2]
-                              + bmp.GetPixel(i - 1, j + 1).R * sobelx[2][0] + bmp.GetPixel(i, j + 1).R * sobelx[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobelx[2][2];
-
-                            int dy = bmp.GetPixel(i - 1, j - 1).R * sobely[0][0] + bmp.GetPixel(i, j - 1).R * sobely[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobely[0][2]
-                                   + bmp.GetPixel(i - 1, j).R * sobely[1][0] + bmp.GetPixel(i, j).R * sobely[1][1] + bmp.GetPixel(i + 1, j).R * sobely[1][2]
-                                   + bmp.GetPixel(i - 1, j + 1).R * sobely[2][0] + bmp.GetPixel(i, j + 1).R * sobely[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobely[2][2];
-                            double derivata = Math.Sqrt((dx * dx) + (dy * dy));
-
-                            if (derivata > 255)
-                            {
-                                imageFinal.SetPixel(i, j, Color.White);
-                            }
-                            else
-                            {
-                                imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)derivata, (int)derivata, (int)derivata));
-                            }
-                        }
+                        imageFinal.SetPixel(i, j, Color.White);
                     }
+                    else
+                    {
+                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)derivata, (int)derivata, (int)derivata));
+                    }
+                }
+            }
             return imageFinal;
         }
+
+        private Bitmap AplicarPrewitt(Bitmap bmp, int[][] prewittX, int[][] prewittY) {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            Bitmap imageFinal = new Bitmap(width, height);
+
+            for (int i = 1; i < width - 1; i++)
+            {
+                for (int j = 1; j < height - 1; j++)
+                {
+                    int dx = bmp.GetPixel(i - 1, j - 1).R * prewittX[0][0] + bmp.GetPixel(i, j - 1).R * prewittX[0][1] + bmp.GetPixel(i + 1, j - 1).R * prewittX[0][2]
+                           + bmp.GetPixel(i - 1, j).R * prewittX[1][0] + bmp.GetPixel(i, j).R * prewittX[1][1] + bmp.GetPixel(i + 1, j).R * prewittX[1][2]
+                           + bmp.GetPixel(i - 1, j + 1).R * prewittX[2][0] + bmp.GetPixel(i, j + 1).R * prewittX[2][1] + bmp.GetPixel(i + 1, j + 1).R * prewittX[2][2];
+
+                    int dy = bmp.GetPixel(i - 1, j - 1).R * prewittY[0][0] + bmp.GetPixel(i, j - 1).R * prewittY[0][1] + bmp.GetPixel(i + 1, j - 1).R * prewittY[0][2]
+                           + bmp.GetPixel(i - 1, j).R * prewittY[1][0] + bmp.GetPixel(i, j).R * prewittY[1][1] + bmp.GetPixel(i + 1, j).R * prewittY[1][2]
+                           + bmp.GetPixel(i - 1, j + 1).R * prewittY[2][0] + bmp.GetPixel(i, j + 1).R * prewittY[2][1] + bmp.GetPixel(i + 1, j + 1).R * prewittY[2][2];
+
+                    double magnitude = Math.Sqrt((dx * dx) + (dy * dy));
+
+                    if (magnitude > 255)
+                    {
+                        imageFinal.SetPixel(i, j, Color.White);
+                    }
+                    else
+                    {
+                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)magnitude, (int)magnitude, (int)magnitude));
+                    }
+                }
+            }
+            return imageFinal;
+        }
+        private Bitmap AplicarLaplaciano(Bitmap bmp, int[][] laplacian) {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            Bitmap imageFinal = new Bitmap(width, height);
+
+            for (int i = 1; i < width - 1; i++)
+            {
+                for (int j = 1; j < height - 1; j++)
+                {
+                    int pixelValue = bmp.GetPixel(i - 1, j - 1).R * laplacian[0][0] + bmp.GetPixel(i, j - 1).R * laplacian[0][1] + bmp.GetPixel(i + 1, j - 1).R * laplacian[0][2]
+                                   + bmp.GetPixel(i - 1, j).R * laplacian[1][0] + bmp.GetPixel(i, j).R * laplacian[1][1] + bmp.GetPixel(i + 1, j).R * laplacian[1][2]
+                                   + bmp.GetPixel(i - 1, j + 1).R * laplacian[2][0] + bmp.GetPixel(i, j + 1).R * laplacian[2][1] + bmp.GetPixel(i + 1, j + 1).R * laplacian[2][2];
+
+                    // Normaliza o valor do pixel para estar dentro do intervalo [0, 255]
+                    pixelValue = Math.Min(Math.Max(pixelValue, 0), 255);
+
+                    imageFinal.SetPixel(i, j, Color.FromArgb(255, pixelValue, pixelValue, pixelValue));
+                }
+            }
+            return imageFinal;
+        }
+
+        //------------------------ Outros ----------------------------------
+
+        private void btnFlipImage_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
+            imgFinal.Image = FlipImage(bmp);
+        }
+
+        private Bitmap FlipImage(Bitmap bmp) {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            Bitmap flippedImage = new Bitmap(width, height);
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    Color pixel = bmp.GetPixel(i, j);
+                    flippedImage.SetPixel(i, height - 1 - j, pixel);
+                }
+            }
+
+            return flippedImage;
+        }
+
+        private void btnGaussiano_Click(object sender, EventArgs e) {
+            if (!double.TryParse(valorGaus.Text, out double sigma) || sigma <= 0)
+            {
+                MessageBox.Show("insira um valor válido para sigma.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(imageURL == "")
+            {
+                MessageBox.Show("Selecione uma imagem.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Bitmap bmp = new Bitmap(imageURL);
+
+            imgFiltro.Image = GerarImagemFiltroGaussian(sigma);
+            imgFinal.Image = AplicarGaussian(bmp, sigma);
+        }
+
+        private Bitmap AplicarGaussian(Bitmap bmp, double sigma) {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            Bitmap imageFinal = new Bitmap(width, height);
+
+            int tamanho = (int)(6 * sigma) + 1;
+            double[] kernel = GerarKernelGaussian1D(sigma, tamanho);
+            int meio = tamanho / 2;
+
+            //horizontal
+            Bitmap tempImage = new Bitmap(width, height);
+            object lockObject = new object();
+            Parallel.For(meio, height - meio, j => {
+                for (int i = meio; i < width - meio; i++)
+                {
+                    double r = 0, g = 0, b = 0;
+                    for (int k = -meio; k <= meio; k++)
+                    {
+                        Color pixel;
+                        lock (lockObject)
+                        {
+                            pixel = bmp.GetPixel(i + k, j);
+                        }
+                        double valor = kernel[meio + k];
+                        r += pixel.R * valor;
+                        g += pixel.G * valor;
+                        b += pixel.B * valor;
+                    }
+                    lock (lockObject)
+                    {
+                        tempImage.SetPixel(i, j, Color.FromArgb((int)r, (int)g, (int)b));
+                    }
+                }
+            });
+
+            //vertical
+            Parallel.For(meio, width - meio, i => {
+                for (int j = meio; j < height - meio; j++)
+                {
+                    double r = 0, g = 0, b = 0;
+                    for (int k = -meio; k <= meio; k++)
+                    {
+                        Color pixel;
+                        lock (lockObject)
+                        {
+                            pixel = tempImage.GetPixel(i, j + k);
+                        }
+                        double valor = kernel[meio + k];
+                        r += pixel.R * valor;
+                        g += pixel.G * valor;
+                        b += pixel.B * valor;
+                    }
+                    int ir = (int)Math.Min(Math.Max(r, 0), 255);
+                    int ig = (int)Math.Min(Math.Max(g, 0), 255);
+                    int ib = (int)Math.Min(Math.Max(b, 0), 255);
+                    lock (lockObject)
+                    {
+                        imageFinal.SetPixel(i, j, Color.FromArgb(ir, ig, ib));
+                    }
+                }
+            });
+
+            return imageFinal;
+        }
+
+        private double[] GerarKernelGaussian1D(double sigma, int tamanho) {
+            double[] kernel = new double[tamanho];
+            double soma = 0;
+            int meio = tamanho / 2;
+            double sigma2 = 2 * sigma * sigma;
+
+            for (int x = -meio; x <= meio; x++)
+            {
+                double valor = Math.Exp(-(x * x) / sigma2) / (Math.PI * sigma2);
+                kernel[x + meio] = valor;
+                soma += valor;
+            }
+
+            for (int i = 0; i < tamanho; i++)
+                kernel[i] /= soma;
+
+            return kernel;
+        }
+
+        private Bitmap GerarImagemFiltroGaussian(double sigma) {
+            int tamanho = (int)(6 * sigma) + 1;
+            double[] kernel = GerarKernelGaussian1D(sigma, tamanho);
+            Bitmap imageFiltro = new Bitmap(tamanho, tamanho);
+
+            for (int i = 0; i < tamanho; i++)
+            {
+                for (int j = 0; j < tamanho; j++)
+                {
+                    int valor = (int)(kernel[Math.Abs(i - tamanho / 2)] * kernel[Math.Abs(j - tamanho / 2)] * 255);
+                    imageFiltro.SetPixel(i, j, Color.FromArgb(valor, valor, valor));
+                }
+            }
+
+            return imageFiltro;
+        }
+
+
     }
 }
