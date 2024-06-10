@@ -2,6 +2,8 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Runtime.Intrinsics.X86;
+using System.Windows.Forms.DataVisualization.Charting;
 //using System.Runtime.Intrinsics.X86;
 //using System.Windows.Forms.DataVisualization.Charting;
 
@@ -50,11 +52,11 @@ namespace AlteradorDeImagens {
         private void Form1_Load(object sender, EventArgs e) {
 
         }
+
         private void btnImagem1_Click(object sender, EventArgs e) {
             try
             {
                 OpenFileDialog dialog = new OpenFileDialog();
-                //dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files(*.png)|*.png | BMP files(*.bmp)|*.bmp";
 
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -302,6 +304,106 @@ namespace AlteradorDeImagens {
             }
         }
 
+        private void btnMultiplica_Click(object sender, EventArgs e) {
+            try
+            {
+                Bitmap bmp = new Bitmap(imageURL);
+                Bitmap bmp2 = new Bitmap(imageURL2);
+                Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+                int width = bmp.Width;
+                int height = bmp.Height;
+
+                bmp2 = ResizeImage(bmp2, width, height);
+
+                Color p;
+                Color p2;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        p = bmp.GetPixel(x, y);
+                        p2 = bmp2.GetPixel(x, y);
+
+                        int a = p.A * p2.A;
+                        int r = p.R * p2.R;
+                        int g = p.G * p2.G;
+                        int b = p.B * p2.B;
+
+                        if (a > 255) a = 255;
+                        if (a < 0) a = 0;
+
+                        if (r > 255) r = 255;
+                        if (r < 0) r = 0;
+
+                        if (g > 255) g = 255;
+                        if (g < 0) g = 0;
+
+                        if (b > 255) b = 255;
+                        if (b < 0) b = 0;
+
+                        imagemFinal.SetPixel(x, y, Color.FromArgb(a, red: r, green: g, blue: b));
+                    }
+                }
+                imgFinal.Image = imagemFinal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDividir_Click(object sender, EventArgs e) {
+            /*try
+            {
+                Bitmap bmp = new Bitmap(imageURL);
+                Bitmap bmp2 = new Bitmap(imageURL2);
+                Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
+
+                int width = bmp.Width;
+                int height = bmp.Height;
+
+                bmp2 = ResizeImage(bmp2, width, height);
+
+                Color p;
+                Color p2;
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        p = bmp.GetPixel(x, y);
+                        p2 = bmp2.GetPixel(x, y);
+
+                        int a = p.A / p2.A;
+                        int r = p.R / p2.R;
+                        int g = p.G / p2.G;
+                        int b = p.B / p2.B;
+
+                        if (a > 255) a = 255;
+                        if (a < 0) a = 0;
+
+                        if (r > 255) r = 255;
+                        if (r < 0) r = 0;
+
+                        if (g > 255) g = 255;
+                        if (g < 0) g = 0;
+
+                        if (b > 255) b = 255;
+                        if (b < 0) b = 0;
+
+                        imagemFinal.SetPixel(x, y, Color.FromArgb(a, red: r, green: g, blue: b));
+                    }
+                }
+                imgFinal.Image = imagemFinal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+        }
+
         private void btnBinario_Click(object sender, EventArgs e) {
             try
             {
@@ -436,6 +538,7 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnAnd_Click(object sender, EventArgs e) {
             try
             {
@@ -485,6 +588,7 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnXor_Click(object sender, EventArgs e) {
             try
             {
@@ -530,6 +634,7 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnOr_Click(object sender, EventArgs e) {
             try
             {
@@ -575,31 +680,68 @@ namespace AlteradorDeImagens {
                 MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnHistograma_Click(object sender, EventArgs e) {
             try
             {
                 Bitmap bmp = new Bitmap(imageURL);
                 Bitmap bmp2 = new Bitmap(imageURL2);
-                Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
-                int width = bmp.Width;
-                int height = bmp.Height;
 
-                bmp2 = ResizeImage(bmp2, width, height);
+                int[] histogram1 = CalcularHistograma(bmp);
+                int[] histogram2 = CalcularHistograma(bmp2);
 
-                // Criar painéis para os histogramas (se necessário)
-                Panel histo1 = histograma1; // Assuma que você inicializou os painéis corretamente
-                Panel histo2 = histograma2;
-
+                MostrarHistograma(histogram1, histograma1);
+                MostrarHistograma(histogram2, histograma2);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Insira a imagem, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Insira as duas imagens, ou algum erro ocorreu", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private int[] CalcularHistograma(Bitmap bmp) {
+            int[] histogram = new int[256];
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color pixel = bmp.GetPixel(i, j);
+                    int grayValue = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
+                    histogram[grayValue]++;
+                }
+            }
+
+            return histogram;
+        }
+
+        private void MostrarHistograma(int[] histogram, Panel panel) {
+            Bitmap ImgHistograma = new Bitmap(panel.Width, panel.Height);
+
+            using (Graphics g = Graphics.FromImage(ImgHistograma))
+            {
+                g.Clear(Color.White);
+                int max = 0;
+
+                for (int i = 0; i < histogram.Length; i++)
+                {
+                    if (histogram[i] > max)
+                    {
+                        max = histogram[i];
+                    }
+                }
+                for (int i = 0; i < histogram.Length; i++)
+                {
+                    float percentage = (float)histogram[i] / max;
+                    int barHeight = (int)(percentage * panel.Height);
+                    g.DrawLine(Pens.Black, new Point(i, panel.Height), new Point(i, panel.Height - barHeight));
+                }
+            }
+            panel.BackgroundImage = ImgHistograma;
         }
 
         private void btnMinimo_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
-            //Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
 
             int[,] kernel = new int[,] { { -1, -1, -1 }, { -1, 0, -1 }, { -1, -1, -1 } };
 
@@ -971,6 +1113,7 @@ namespace AlteradorDeImagens {
             }
             return imageFinal;
         }
+
         private Bitmap AplicarLaplaciano(Bitmap bmp, int[][] laplacian) {
             int width = bmp.Width;
             int height = bmp.Height;
@@ -1024,7 +1167,7 @@ namespace AlteradorDeImagens {
                 return;
             }
 
-            if(imageURL == "")
+            if (imageURL == "")
             {
                 MessageBox.Show("Selecione uma imagem.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1048,7 +1191,8 @@ namespace AlteradorDeImagens {
             //horizontal
             Bitmap tempImage = new Bitmap(width, height);
             object lockObject = new object();
-            Parallel.For(meio, height - meio, j => {
+            Parallel.For(meio, height - meio, j =>
+            {
                 for (int i = meio; i < width - meio; i++)
                 {
                     double r = 0, g = 0, b = 0;
@@ -1072,7 +1216,8 @@ namespace AlteradorDeImagens {
             });
 
             //vertical
-            Parallel.For(meio, width - meio, i => {
+            Parallel.For(meio, width - meio, i =>
+            {
                 for (int j = meio; j < height - meio; j++)
                 {
                     double r = 0, g = 0, b = 0;
@@ -1137,6 +1282,28 @@ namespace AlteradorDeImagens {
             return imageFiltro;
         }
 
+        private void btnRecorte_Click(object sender, EventArgs e) {
+            Bitmap bmp = new Bitmap(imageURL);
 
+            int width = bmp.Width;
+            int height = bmp.Height;
+            int cropWidth = width / 2;
+            int cropHeight = height / 2;
+            int startX = (width - cropWidth) / 10;
+            int startY = (height - cropHeight) / 2;
+
+            Bitmap croppedImage = new Bitmap(cropWidth, cropHeight);
+
+            for (int i = 0; i < cropWidth; i++)
+            {
+                for (int j = 0; j < cropHeight; j++)
+                {
+                    Color pixel = bmp.GetPixel(startX + i, startY + j);
+                    croppedImage.SetPixel(i, j, pixel);
+                }
+            }
+
+            imgFinal.Image = croppedImage;
+        }
     }
 }

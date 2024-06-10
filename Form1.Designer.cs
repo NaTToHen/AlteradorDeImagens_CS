@@ -48,6 +48,8 @@
             btnOr = new Button();
             btnHistograma = new Button();
             panel1 = new Panel();
+            btnDividir = new Button();
+            btnMultiplica = new Button();
             label2 = new Label();
             panel2 = new Panel();
             label1 = new Label();
@@ -96,7 +98,7 @@
             titulo.Anchor = AnchorStyles.Top;
             titulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             titulo.ForeColor = Color.White;
-            titulo.Location = new Point(958, 32);
+            titulo.Location = new Point(927, 34);
             titulo.Name = "titulo";
             titulo.Size = new Size(281, 25);
             titulo.TabIndex = 0;
@@ -112,7 +114,7 @@
             btnImagem1.FlatStyle = FlatStyle.Flat;
             btnImagem1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem1.ForeColor = SystemColors.Control;
-            btnImagem1.Location = new Point(26, 516);
+            btnImagem1.Location = new Point(25, 518);
             btnImagem1.Name = "btnImagem1";
             btnImagem1.Size = new Size(350, 32);
             btnImagem1.TabIndex = 1;
@@ -125,7 +127,7 @@
             imgCarregada.Anchor = AnchorStyles.None;
             imgCarregada.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada.Location = new Point(26, 151);
+            imgCarregada.Location = new Point(25, 153);
             imgCarregada.Name = "imgCarregada";
             imgCarregada.Size = new Size(350, 350);
             imgCarregada.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -137,7 +139,7 @@
             imgFinal.Anchor = AnchorStyles.None;
             imgFinal.BackColor = Color.FromArgb(30, 30, 30);
             imgFinal.BorderStyle = BorderStyle.FixedSingle;
-            imgFinal.Location = new Point(1516, 151);
+            imgFinal.Location = new Point(1515, 153);
             imgFinal.Name = "imgFinal";
             imgFinal.Size = new Size(350, 350);
             imgFinal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -230,7 +232,7 @@
             imgCarregada2.Anchor = AnchorStyles.None;
             imgCarregada2.BackColor = Color.FromArgb(30, 30, 30);
             imgCarregada2.BorderStyle = BorderStyle.FixedSingle;
-            imgCarregada2.Location = new Point(395, 151);
+            imgCarregada2.Location = new Point(394, 153);
             imgCarregada2.Name = "imgCarregada2";
             imgCarregada2.Size = new Size(350, 350);
             imgCarregada2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -246,7 +248,7 @@
             btnImagem2.FlatStyle = FlatStyle.Flat;
             btnImagem2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImagem2.ForeColor = SystemColors.Control;
-            btnImagem2.Location = new Point(395, 516);
+            btnImagem2.Location = new Point(394, 518);
             btnImagem2.Name = "btnImagem2";
             btnImagem2.Size = new Size(350, 32);
             btnImagem2.TabIndex = 9;
@@ -407,6 +409,8 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(40, 40, 40);
+            panel1.Controls.Add(btnDividir);
+            panel1.Controls.Add(btnMultiplica);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(btnCinza);
             panel1.Controls.Add(btnBrilho);
@@ -416,10 +420,44 @@
             panel1.Controls.Add(valorContraste);
             panel1.Controls.Add(btnContraste);
             panel1.Controls.Add(btnNegativo);
-            panel1.Location = new Point(773, 151);
+            panel1.Location = new Point(772, 153);
             panel1.Name = "panel1";
             panel1.Size = new Size(420, 350);
             panel1.TabIndex = 21;
+            // 
+            // btnDividir
+            // 
+            btnDividir.Anchor = AnchorStyles.None;
+            btnDividir.BackColor = Color.FromArgb(64, 64, 64);
+            btnDividir.FlatAppearance.MouseDownBackColor = Color.White;
+            btnDividir.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnDividir.FlatStyle = FlatStyle.Flat;
+            btnDividir.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDividir.ForeColor = SystemColors.Control;
+            btnDividir.Location = new Point(230, 155);
+            btnDividir.Name = "btnDividir";
+            btnDividir.Size = new Size(176, 32);
+            btnDividir.TabIndex = 26;
+            btnDividir.Text = "Dividir imagens";
+            btnDividir.UseVisualStyleBackColor = false;
+            btnDividir.Click += btnDividir_Click;
+            // 
+            // btnMultiplica
+            // 
+            btnMultiplica.Anchor = AnchorStyles.None;
+            btnMultiplica.BackColor = Color.FromArgb(64, 64, 64);
+            btnMultiplica.FlatAppearance.MouseDownBackColor = Color.White;
+            btnMultiplica.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnMultiplica.FlatStyle = FlatStyle.Flat;
+            btnMultiplica.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMultiplica.ForeColor = SystemColors.Control;
+            btnMultiplica.Location = new Point(230, 62);
+            btnMultiplica.Name = "btnMultiplica";
+            btnMultiplica.Size = new Size(176, 32);
+            btnMultiplica.TabIndex = 25;
+            btnMultiplica.Text = "Multi. imagens";
+            btnMultiplica.UseVisualStyleBackColor = false;
+            btnMultiplica.Click += btnMultiplica_Click;
             // 
             // label2
             // 
@@ -444,7 +482,7 @@
             panel2.Controls.Add(btnOr);
             panel2.Controls.Add(btnAnd);
             panel2.Controls.Add(btnXor);
-            panel2.Location = new Point(773, 516);
+            panel2.Location = new Point(772, 518);
             panel2.Name = "panel2";
             panel2.Size = new Size(420, 193);
             panel2.TabIndex = 22;
@@ -472,7 +510,7 @@
             panel3.Controls.Add(btnMinimo);
             panel3.Controls.Add(btnMaximo);
             panel3.Controls.Add(label3);
-            panel3.Location = new Point(773, 728);
+            panel3.Location = new Point(772, 730);
             panel3.Name = "panel3";
             panel3.Size = new Size(420, 259);
             panel3.TabIndex = 24;
@@ -606,7 +644,7 @@
             panel4.Controls.Add(histograma2);
             panel4.Controls.Add(histograma1);
             panel4.Controls.Add(histogramaTitulo);
-            panel4.Location = new Point(26, 573);
+            panel4.Location = new Point(25, 575);
             panel4.Name = "panel4";
             panel4.Size = new Size(719, 348);
             panel4.TabIndex = 24;
@@ -636,7 +674,7 @@
             panel5.Controls.Add(imgFiltro);
             panel5.Controls.Add(label4);
             panel5.Controls.Add(button8);
-            panel5.Location = new Point(1210, 151);
+            panel5.Location = new Point(1209, 153);
             panel5.Name = "panel5";
             panel5.Size = new Size(289, 350);
             panel5.TabIndex = 25;
@@ -719,7 +757,7 @@
             panel6.Controls.Add(btnLaplaciano);
             panel6.Controls.Add(btnSobel);
             panel6.Controls.Add(label5);
-            panel6.Location = new Point(1210, 516);
+            panel6.Location = new Point(1209, 518);
             panel6.Name = "panel6";
             panel6.Size = new Size(289, 193);
             panel6.TabIndex = 24;
@@ -794,7 +832,7 @@
             panel7.Controls.Add(btnFlipImage);
             panel7.Controls.Add(btnRecorte);
             panel7.Controls.Add(label6);
-            panel7.Location = new Point(1210, 728);
+            panel7.Location = new Point(1209, 730);
             panel7.Name = "panel7";
             panel7.Size = new Size(289, 154);
             panel7.TabIndex = 27;
@@ -831,6 +869,7 @@
             btnRecorte.TabIndex = 25;
             btnRecorte.Text = "Recortar Imagem";
             btnRecorte.UseVisualStyleBackColor = false;
+            btnRecorte.Click += btnRecorte_Click;
             // 
             // label6
             // 
@@ -846,10 +885,10 @@
             // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(8F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            ClientSize = new Size(1684, 1031);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(panel5);
@@ -939,5 +978,7 @@
         private Button btnFlipImage;
         private Button btnRecorte;
         private Label label6;
+        private Button btnDividir;
+        private Button btnMultiplica;
     }
 }
