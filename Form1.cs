@@ -464,10 +464,8 @@ namespace AlteradorDeImagens {
                         Color pixel1 = bmp.GetPixel(x, y);
                         Color pixel2 = bmp2.GetPixel(x, y);
 
-                        // Realize o blending entre os pixels das duas imagens
                         Color blendedPixel = Blending(pixel1, pixel2);
 
-                        // Defina o pixel na imagem final
                         imagemFinal.SetPixel(x, y, blendedPixel);
                     }
                 }
@@ -752,7 +750,6 @@ namespace AlteradorDeImagens {
 
         private void btnMedia_Click(object sender, EventArgs e) {
             Bitmap bmp = new Bitmap(imageURL);
-            //Bitmap imagemFinal = new Bitmap(bmp.Width, bmp.Height);
 
             int[,] kernel = new int[,] { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
 
@@ -1067,15 +1064,16 @@ namespace AlteradorDeImagens {
                     int dy = bmp.GetPixel(i - 1, j - 1).R * sobely[0][0] + bmp.GetPixel(i, j - 1).R * sobely[0][1] + bmp.GetPixel(i + 1, j - 1).R * sobely[0][2]
                            + bmp.GetPixel(i - 1, j).R * sobely[1][0] + bmp.GetPixel(i, j).R * sobely[1][1] + bmp.GetPixel(i + 1, j).R * sobely[1][2]
                            + bmp.GetPixel(i - 1, j + 1).R * sobely[2][0] + bmp.GetPixel(i, j + 1).R * sobely[2][1] + bmp.GetPixel(i + 1, j + 1).R * sobely[2][2];
-                    double derivata = Math.Sqrt((dx * dx) + (dy * dy));
 
-                    if (derivata > 255)
+                    double derivada = Math.Sqrt((dx * dx) + (dy * dy));
+
+                    if (derivada > 255)
                     {
                         imageFinal.SetPixel(i, j, Color.White);
                     }
                     else
                     {
-                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)derivata, (int)derivata, (int)derivata));
+                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)derivada, (int)derivada, (int)derivada));
                     }
                 }
             }
@@ -1099,15 +1097,15 @@ namespace AlteradorDeImagens {
                            + bmp.GetPixel(i - 1, j).R * prewittY[1][0] + bmp.GetPixel(i, j).R * prewittY[1][1] + bmp.GetPixel(i + 1, j).R * prewittY[1][2]
                            + bmp.GetPixel(i - 1, j + 1).R * prewittY[2][0] + bmp.GetPixel(i, j + 1).R * prewittY[2][1] + bmp.GetPixel(i + 1, j + 1).R * prewittY[2][2];
 
-                    double magnitude = Math.Sqrt((dx * dx) + (dy * dy));
+                    double total = Math.Sqrt((dx * dx) + (dy * dy));
 
-                    if (magnitude > 255)
+                    if (total > 255)
                     {
                         imageFinal.SetPixel(i, j, Color.White);
                     }
                     else
                     {
-                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)magnitude, (int)magnitude, (int)magnitude));
+                        imageFinal.SetPixel(i, j, Color.FromArgb(255, (int)total, (int)total, (int)total));
                     }
                 }
             }
@@ -1191,6 +1189,7 @@ namespace AlteradorDeImagens {
             //horizontal
             Bitmap tempImage = new Bitmap(width, height);
             object lockObject = new object();
+
             Parallel.For(meio, height - meio, j =>
             {
                 for (int i = meio; i < width - meio; i++)
@@ -1289,21 +1288,21 @@ namespace AlteradorDeImagens {
             int height = bmp.Height;
             int cropWidth = width / 2;
             int cropHeight = height / 2;
-            int startX = (width - cropWidth) / 10;
+            int startX = (width - cropWidth) / 2;
             int startY = (height - cropHeight) / 2;
 
-            Bitmap croppedImage = new Bitmap(cropWidth, cropHeight);
+            Bitmap imgRecorte = new Bitmap(cropWidth, cropHeight);
 
             for (int i = 0; i < cropWidth; i++)
             {
                 for (int j = 0; j < cropHeight; j++)
                 {
                     Color pixel = bmp.GetPixel(startX + i, startY + j);
-                    croppedImage.SetPixel(i, j, pixel);
+                    imgRecorte.SetPixel(i, j, pixel);
                 }
             }
 
-            imgFinal.Image = croppedImage;
+            imgFinal.Image = imgRecorte;
         }
     }
 }
